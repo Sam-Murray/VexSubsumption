@@ -28,6 +28,7 @@ void initializeIO() {
   pinMode(6, OUTPUT);
   pinMode(7, OUTPUT);
   pinMode(8, OUTPUT);
+  pinMode(9, OUTPUT);
 }
 
 /*

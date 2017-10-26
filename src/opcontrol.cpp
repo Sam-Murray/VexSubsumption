@@ -61,12 +61,13 @@ void operatorControl()
 {
   int DRpin=2;
   int DLpin=3;
-  int Lpin=4;
-  int ILpin=5;
-  int IRpin=6;
-  int CLpin=7;
-  int CUpin=8;
-  Robot robot= Robot(DRpin, DLpin,Lpin,ILpin,IRpin,CLpin,CUpin, 1);
+  int LRpin=4;
+  int LLpin=5;
+  int ILpin=6;
+  int IRpin=7;
+  int CLpin=8;
+  int CUpin=9;
+  Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,ILpin,IRpin,CLpin,CUpin, 1);
   while(true){
     robot.Update(1);
   }
