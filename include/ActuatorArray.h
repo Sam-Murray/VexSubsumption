@@ -7,7 +7,6 @@ private:
   Actuator motors[4];
 public:
   ActuatorArray();
-  ActuatorArray(int pin1);
   ActuatorArray(int pin1,int pin2);
   ActuatorArray(int pin1,int pin2,int pin3,int pin4);
   void setSpeed(int index,int s);

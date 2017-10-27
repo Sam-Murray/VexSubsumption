@@ -1,20 +1,12 @@
 #include "ActuatorArray.h"
 ActuatorArray::ActuatorArray(){
 }
-ActuatorArray::ActuatorArray(int pin1){
-  motors[0]=Actuator( pin1);
-  motors[1]=Actuator(0);
-  motors[2]=Actuator(0);
-  motors[3]=Actuator(0);
-}
-ActuatorArray::ActuatorArray(int pin1,int pin2){
-  motors[0]=Actuator( pin1);
-  motors[1]=Actuator( pin2);
-  motors[2]=Actuator(0);
-  motors[3]=Actuator(0);
+
+ActuatorArray::ActuatorArray(int pin1,int pin2):motors({Actuator( pin1),Actuator( pin2),Actuator(0),Actuator(0)}){
+
 }
 
-ActuatorArray::ActuatorArray(int pin1,int pin2,int pin3,int pin4){
+ActuatorArray::ActuatorArray(int pin1,int pin2,int pin3,int pin4):motors({Actuator( pin1),Actuator( pin2),Actuator(pin3),Actuator(pin4)}){
   motors[0]=Actuator( pin1);
   motors[1]=Actuator( pin2);
   motors[2]=Actuator(pin3);
@@ -36,10 +28,10 @@ void ActuatorArray::setSpeed(int s){
 }
 
 void ActuatorArray::Update(bool outPressed, bool inPressed,int i1,int i2,int i3,int i4){
-  motors[0].Update( outPressed+i1, inPressed+i1);
-  motors[1].Update( outPressed+i2, inPressed+i2);
-  motors[2].Update( outPressed+i3, inPressed+i3);
-  motors[3].Update( outPressed+i4, inPressed+i4);
+  motors[0].Update( outPressed, inPressed);
+  motors[1].Update( inPressed, outPressed);
+  motors[2].Update( inPressed, outPressed);
+  motors[3].Update( outPressed, inPressed);
 }
 void ActuatorArray::Update(bool outPressed, bool inPressed){
   Update( outPressed,  inPressed,0,0,0,0);

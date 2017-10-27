@@ -1,8 +1,11 @@
 #include "Actuator.h"
 
 Actuator::Actuator():actuatorMotor(MotorUnit(4)){
+
 }
 Actuator::Actuator(int aPin):actuatorMotor(MotorUnit(aPin)){
+  speed=127;
+
 }
 Actuator::Actuator(int aPin,int s):actuatorMotor(MotorUnit(aPin)){
   speed=s;

@@ -4,7 +4,7 @@
 #include "DriveTrain.h"
 #include "Actuator.h"
 #include "ActuatorArray.h"
-
+#include "Claw.h"
 
 #define R_MOVE 2
 
@@ -13,12 +13,10 @@
 class Robot{
 public:
   Robot();
-  Robot(int DRpin,int DLpin,int LRpin,int LLpin,int ILpin,int IRpin,int CLpin,int CUpin,int speedC); //constructor for ROBOT
+  Robot(int DRpin,int DLpin,int LRpin,int LLpin,int LURpin,int LULpin,int C1pin,int C2pin,int speedC); //constructor for ROBOT
   DriveTrain driveT;//drive train
   ActuatorArray lift;
-  ActuatorArray intake;
-  Actuator upperClaw;
-  Actuator lowerClaw;
+  Claw claw;
   void Update(int joystickSlot);
 };
 

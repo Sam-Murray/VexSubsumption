@@ -4,18 +4,16 @@ Robot::Robot()
 {
 
 }
-Robot::Robot(int DRpin,int DLpin,int LRpin,int LLpin,int ILpin,int IRpin,int CLpin,int CUpin,int speedC){
+Robot::Robot(int DRpin,int DLpin,int LRpin,int LLpin,int LURpin,int LULpin,int C1pin,int C2pin,int speedC){
   driveT=DriveTrain(DRpin, DLpin,speedC);
-  lift=ActuatorArray(LRpin,LLpin);
-  intake=ActuatorArray(ILpin,IRpin);
-  upperClaw=Actuator(CUpin,50);
-  lowerClaw=Actuator(CLpin,100);
+  lift=ActuatorArray(LRpin,LLpin,LURpin,LLpin);
+  claw=Claw(C1pin,C2pin);
 }
 void Robot::Update(int joystickSlot)
 {
+    bool liftup=joystickGetDigital(joystickSlot,5,JOY_UP);
+    bool liftlower=joystickGetDigital(joystickSlot,5,JOY_DOWN);
     driveT.Update(joystickGetAnalog(joystickSlot,L_MOVE),joystickGetAnalog(joystickSlot,R_MOVE));
-    lift.Update(joystickGetDigital(joystickSlot,8,JOY_UP),joystickGetDigital(joystickSlot,8,JOY_DOWN),0,1,0,0);
-    intake.Update(joystickGetDigital(joystickSlot,7,JOY_UP),joystickGetDigital(joystickSlot,7,JOY_DOWN),0,1,0,0);
-    upperClaw.Update(joystickGetDigital(joystickSlot,5,JOY_UP),joystickGetDigital(joystickSlot,5,JOY_DOWN));
-    lowerClaw.Update(joystickGetDigital(joystickSlot,6,JOY_UP),joystickGetDigital(joystickSlot,6,JOY_DOWN));
+    lift.Update(liftup,liftlower);
+    claw.Update(joystickGetDigital(joystickSlot,6,JOY_UP),joystickGetDigital(joystickSlot,6,JOY_DOWN));
 }
