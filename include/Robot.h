@@ -6,10 +6,6 @@
 #include "ActuatorArray.h"
 #include "Claw.h"
 
-#define R_MOVE 2
-
-#define L_MOVE 3
-
 class Robot{
 public:
   Robot();

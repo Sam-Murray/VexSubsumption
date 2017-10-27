@@ -2,7 +2,7 @@
 
 Robot::Robot()
 {
-
+ claw=Claw();
 }
 Robot::Robot(int DRpin,int DLpin,int LRpin,int LLpin,int LURpin,int LULpin,int Cpin,int speedC){
   driveT=DriveTrain(DRpin, DLpin,speedC);

@@ -7,7 +7,7 @@ private:
   int pin1;
   bool open=false;
 public:
-  Claw(){};
+  Claw():pin1(1){};
   Claw(int p1):pin1(p1){};
   void clawSet(bool openClosed){
     digitalWrite(pin1, openClosed);
