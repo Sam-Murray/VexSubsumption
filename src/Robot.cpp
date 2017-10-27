@@ -4,10 +4,10 @@ Robot::Robot()
 {
 
 }
-Robot::Robot(int DRpin,int DLpin,int LRpin,int LLpin,int LURpin,int LULpin,int C1pin,int C2pin,int speedC){
+Robot::Robot(int DRpin,int DLpin,int LRpin,int LLpin,int LURpin,int LULpin,int Cpin,int speedC){
   driveT=DriveTrain(DRpin, DLpin,speedC);
   lift=ActuatorArray(LRpin,LLpin,LURpin,LLpin);
-  claw=Claw(C1pin,C2pin);
+  claw=Claw(Cpin);
 }
 void Robot::Update(int joystickSlot)
 {
