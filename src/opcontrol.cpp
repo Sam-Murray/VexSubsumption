@@ -56,18 +56,18 @@
    // }
    //digitalWrite(9,false);
  #include "Robot.h"
-
+# include "API.h"
 void operatorControl()
 {
   int DRpin=2;
   int DLpin=3;
   int LRpin=4;
   int LLpin=5;
-  int LURpin=6;
-  int LULpin=7;
   int Cupin=1;
-  Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,LURpin,LULpin,Cupin, 1);
+  Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,Cupin, 1);
   while(true){
     robot.Update(1);
+
+
   }
 }

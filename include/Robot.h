@@ -6,10 +6,14 @@
 #include "ActuatorArray.h"
 #include "Claw.h"
 
+#define R_MOVE 2
+
+#define L_MOVE 3
+
 class Robot{
 public:
   Robot();
-  Robot(int DRpin,int DLpin,int LRpin,int LLpin,int LURpin,int LULpin,int Cpin,int speedC); //constructor for ROBOT
+  Robot(int DRpin,int DLpin,int LRpin,int LLpin,int Cpin,int speedC); //constructor for ROBOT
   DriveTrain driveT;//drive train
   ActuatorArray lift;
   Claw claw;

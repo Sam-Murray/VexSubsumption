@@ -14,7 +14,7 @@ public:
     open=openClosed;
   }
   void Update(bool o, bool c){
-    bool u=o&&(!c);
+    bool u=!(o&&(!c));
     clawSet(u);
   }
 };
