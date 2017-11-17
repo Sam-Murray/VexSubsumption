@@ -30,8 +30,7 @@ void ActuatorArray::setSpeed(int s){
 void ActuatorArray::Update(bool outPressed, bool inPressed,int i1,int i2,int i3,int i4){
   motors[0].Update( inPressed, outPressed);
   motors[1].Update( outPressed, inPressed);
-  motors[2].Update( inPressed, outPressed);
-  motors[3].Update( outPressed, inPressed);
+
 }
 void ActuatorArray::Update(bool outPressed, bool inPressed){
   Update( outPressed,  inPressed,0,0,0,0);

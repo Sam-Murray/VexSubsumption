@@ -13,10 +13,15 @@
 class Robot{
 public:
   Robot();
-  Robot(int DRpin,int DLpin,int LRpin,int LLpin,int Cpin,int speedC); //constructor for ROBOT
+  Robot(int DRpin,int DLpin,int LRpin,int LLpin,int LURpin,int LULpin,int Cpin,int Ipin,int SLpin,int speedC); //constructor for ROBOT
   DriveTrain driveT;//drive train
-  ActuatorArray lift;
+  ActuatorArray liftL;
+  ActuatorArray liftR;
+  Actuator intake;
   Claw claw;
+  Actuator secondaryLift;
+  bool clawClosed=false;
+  bool clawOpened=false;
   void Update(int joystickSlot);
 };
 

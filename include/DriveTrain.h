@@ -4,8 +4,7 @@
 #include "API.h"
 #include "math.h"
 
-class DriveTrain
-{
+class DriveTrain{
 private:
   // MotorUnit FR; //front right motor
   // MotorUnit FL; //front left motor

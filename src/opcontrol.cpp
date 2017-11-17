@@ -59,14 +59,35 @@
 # include "API.h"
 void operatorControl()
 {
+  int Cpin=1;
   int DRpin=2;
   int DLpin=3;
   int LRpin=4;
   int LLpin=5;
-  int Cupin=1;
-  Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,Cupin, 1);
+  int LURpin=6;
+  int LULpin=7;
+  int SLpin=9;
+
+  int Ipin=8;
+  bool closed=false;
+  bool held=false;
+  Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,LURpin,LULpin,Cpin,Ipin,SLpin, 1);
   while(true){
     robot.Update(1);
+    if(joystickGetDigital(1,8,JOY_LEFT)){
+      if(!held){
+        closed=!closed;
+      }
+      held=true;
+    }else{
+      held=false;
+    }
+
+    if(closed){
+      digitalWrite(1, LOW);
+    }else{
+      digitalWrite(1, HIGH);
+    }
 
 
   }
