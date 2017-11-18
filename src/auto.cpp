@@ -12,6 +12,7 @@
 
 #include "main.h"
 #include "DriveTrain.h"
+#include "Robot.h"
 /*
  * Runs the user autonomous code. This function will be started in its own task with the default
  * priority and stack size whenever the robot is enabled via the Field Management System or the
@@ -26,6 +27,43 @@
  * The autonomous task may exit, unlike operatorControl() which should never exit. If it does
  * so, the robot will await a switch to another mode or disable/enable cycle.
  */
+void driveForward(Robot r, int t){
+  r.Update(127, 127, 0, 0, 0,0, 0, 0, 0);
+  delay(t);
+  r.Update(0, 0, 0, 0, 0,0, 0, 0, 0);
+}
+void upSecond(Robot r, int t){
+  r.Update(0, 0, 0, 0, 0,0, 0, 1, 0);
+  delay(t);
+  r.Update(0, 0, 0, 0, 0,0, 0, 0, 0);
+}
+void downSecond(Robot r, int t){
+  r.Update(0, 0, 0, 0, 0,0, 0, 0, 1);
+  delay(t);
+  r.Update(0, 0, 0, 0, 0,0, 0, 0, 0);
+}
+void toggleClaw(Robot r){
+  r.Update(0, 0, 0, 0, 0,0, 1, 0, 0);
+}
 void autonomous() {
+  int Cpin=1;
+  int DRpin=2;
+  int DLpin=3;
+  int LRpin=4;
+  int LLpin=5;
+  int LURpin=6;
+  int LULpin=7;
+  int SLpin=9;
+
+  int Ipin=8;
+
+  Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,LURpin,LULpin,Cpin,Ipin,SLpin, 1);
+  int upTime=0;
+  int downTime=0;
+  int driveTime=0;
+  toggleClaw(robot);
+  upSecond(robot,upTime);
+  driveForward(robot,driveTime);
+  downSecond(robot,downTime);
 
 }

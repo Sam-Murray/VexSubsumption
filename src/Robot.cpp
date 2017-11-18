@@ -22,3 +22,13 @@ void Robot::Update(int joystickSlot)
     claw.Update(joystickGetDigital(joystickSlot,8,JOY_UP));
     secondaryLift.Update(joystickGetDigital(joystickSlot,8,JOY_LEFT),joystickGetDigital(joystickSlot,8,JOY_RIGHT));
 }
+void Robot::Update(int LMOVE,int RMOVE,bool liftUp,bool liftDown,bool intakeUp,bool intakeDown,bool clawToggle,bool secondUp,bool secondDown)
+{
+
+    driveT.Update(LMOVE,RMOVE));
+    liftL.Update(liftUp,liftDown);
+    liftR.Update(liftDown,liftUp);
+    intake.Update(intakeDown,intakeUp);
+    claw.Update(clawToggle)
+    secondaryLift.Update(secondUp,secondDown);
+}

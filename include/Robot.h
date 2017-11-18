@@ -20,6 +20,7 @@ public:
   Actuator intake;
   Claw claw;
   Actuator secondaryLift;
+  void Update(int LMOVE,int RMOVE,bool liftUp,bool liftDown,bool intakeUp,bool intakeDown,bool clawToggle,bool secondUp,bool secondDown);
   void Update(int joystickSlot);
 };
 
