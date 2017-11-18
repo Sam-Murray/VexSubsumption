@@ -8,7 +8,6 @@ Robot::Robot(int DRpin,int DLpin,int LRpin,int LLpin,int LURpin,int LULpin,int C
   liftL=ActuatorArray(LLpin,LULpin);
   liftR=ActuatorArray(LRpin,LURpin);
   intake=Actuator(Ipin);
-  intake=Actuator(SLpin);
   claw=Claw(Cpin,50);
   secondaryLift=Actuator(SLpin);
 

@@ -7,7 +7,7 @@ class Claw:public Actuator{
 private:
   bool closed=false;
   bool control=true;
-  int openTimer=100;
+  int openTimer=700;
 public:
   Claw():Actuator::Actuator(1){};
   Claw(int p1):Actuator::Actuator(p1){};
@@ -15,11 +15,13 @@ public:
 
   void clawSet(bool openClosed){
     if(openClosed){
-      Actuator::Update(1,0);
-      openTimer=100;
-    }else if(openTimer>0){
       Actuator::Update(0,1);
+      openTimer=700;
+    }else if(openTimer>0){
+      Actuator::Update(1,0);
       openTimer-=1;
+    }else{
+      Actuator::Update(0,0);
     }
   }
 
@@ -30,11 +32,7 @@ public:
       closed=!closed;
     }
     clawSet(closed);
-    if(!toggle){
-      control=true;
-    }else{
-      control=false;
-    }
+    control=!toggle;
   }
 };
 
