@@ -58,9 +58,9 @@ void autonomous() {
   int Ipin=8;
 
   Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,LURpin,LULpin,Cpin,Ipin,SLpin, 1);
-  int upTime=2000;
-  int downTime=2000;
-  int driveTime=100000;
+  int upTime=50000;
+  int downTime=10000;
+  int driveTime=50000;
   int t=0;
   while(t<15000000){
 
@@ -73,6 +73,7 @@ void autonomous() {
     }else{
       robot.Update(0, 0, 0, 0, 0,0, 0, 0, 0);
     }
+    delay(1);
     t++;
   }
 }
