@@ -57,12 +57,12 @@ void autonomous() {
 
   int Ipin=8;
 
-  Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,LURpin,LULpin,Cpin,Ipin,SLpin, 1);
-  int upTime=200;
-  int downTime=200;
-  int driveTime=1000;
-  upSecond(robot,upTime);
-  driveForward(robot,driveTime);
-  downSecond(robot,downTime);
+  // Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,LURpin,LULpin,Cpin,Ipin,SLpin, 1);
+  // int upTime=200;
+  // int downTime=200;
+  // int driveTime=1000;
+  // upSecond(robot,upTime);
+  // driveForward(robot,driveTime);
+  // downSecond(robot,downTime);
 
 }
