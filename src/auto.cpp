@@ -58,10 +58,9 @@ void autonomous() {
   int Ipin=8;
 
   Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,LURpin,LULpin,Cpin,Ipin,SLpin, 1);
-  int upTime=0;
-  int downTime=0;
-  int driveTime=0;
-  toggleClaw(robot);
+  int upTime=200;
+  int downTime=200;
+  int driveTime=1000;
   upSecond(robot,upTime);
   driveForward(robot,driveTime);
   downSecond(robot,downTime);
