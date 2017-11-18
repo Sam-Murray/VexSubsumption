@@ -57,12 +57,25 @@ void autonomous() {
 
   int Ipin=8;
 
-  // Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,LURpin,LULpin,Cpin,Ipin,SLpin, 1);
-  // int upTime=200;
-  // int downTime=200;
-  // int driveTime=1000;
+  Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,LURpin,LULpin,Cpin,Ipin,SLpin, 1);
+  int upTime=2000;
+  int downTime=2000;
+  int driveTime=100000;
+  int t=0;
+  while(t<15000000){
+
+    if(t<upTime){
+        robot.Update(0, 0, 0, 0, 0,0, 0, 1, 0);
+    }else if(t<(upTime+driveTime)){
+          robot.Update(127, 127, 0, 0, 0,0, 0, 0, 0);
+    }else if(t<(upTime+driveTime+downTime)){
+      robot.Update(0, 0, 0, 0, 0,0, 0, 0, 1);
+    }else{
+      robot.Update(0, 0, 0, 0, 0,0, 0, 0, 0);
+    }
+    t++;
+  }
+}
   // upSecond(robot,upTime);
   // driveForward(robot,driveTime);
   // downSecond(robot,downTime);
-
-}
