@@ -9,7 +9,6 @@
  * PROS contains FreeRTOS (http://www.freertos.org) whose source code may be
  * obtained from http://sourceforge.net/projects/freertos/files/ or on request.
  */
-
 #include "main.h"
 #include "DriveTrain.h"
 #include "Robot.h"
@@ -58,24 +57,32 @@ void autonomous() {
   int Ipin=8;
 
   Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,LURpin,LULpin,Cpin,Ipin,SLpin, 1);
-  int upTime=50000;
-  int downTime=10000;
-  int driveTime=50000;
-  int t=0;
-  while(t<15000000){
 
-    if(t<upTime){
-        robot.Update(0, 0, 0, 0, 0,0, 0, 1, 0);
-    }else if(t<(upTime+driveTime)){
-          robot.Update(127, 127, 0, 0, 0,0, 0, 0, 0);
-    }else if(t<(upTime+driveTime+downTime)){
-      robot.Update(0, 0, 0, 0, 0,0, 0, 0, 1);
-    }else{
-      robot.Update(0, 0, 0, 0, 0,0, 0, 0, 0);
-    }
-    delay(1);
+  int upLiftTime=2000;
+  int downTime=900;
+  int driveTime=1500;
+  int t=0;
+  while(t<upLiftTime){
+    robot.SpecialUpdate(0, 0, 1, 0, 0,0, 1, 0, 0);
     t++;
+    delay(1);
+
   }
+  t=0;
+  while(t<driveTime){
+    robot.SpecialUpdate(127, 127, 0, 0, 0, 0, 1, 0, 0);
+    t++;
+    delay(1);
+
+  }
+  t=0;
+  while(t<downTime){
+    robot.SpecialUpdate(0, 0, 0, 1, 0,0, 0, 0, 0);
+    t++;
+    delay(1);
+  }
+  robot.SpecialUpdate(0, 0, 0, 0, 0,0, 0, 0, 0);
+
 }
   // upSecond(robot,upTime);
   // driveForward(robot,driveTime);

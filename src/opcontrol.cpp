@@ -57,8 +57,58 @@
    //digitalWrite(9,false);
  #include "Robot.h"
 # include "API.h"
+
+void wackyautonomous() {
+  int Cpin=1;
+  int DRpin=2;
+  int DLpin=3;
+  int LRpin=4;
+  int LLpin=5;
+  int LURpin=6;
+  int LULpin=7;
+  int SLpin=9;
+
+  int Ipin=8;
+
+  Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,LURpin,LULpin,Cpin,Ipin,SLpin, 1);
+
+  int upLiftTime=2000;
+  int downTime=900;
+  int driveTime=1500;
+  int t=0;
+  while(t<upLiftTime){
+    robot.SpecialUpdate(0, 0, 1, 0, 0,0, 1, 0, 0);
+    t++;
+    delay(1);
+
+  }
+  t=0;
+  while(t<driveTime){
+    robot.SpecialUpdate(127, 127, 0, 0, 0, 0, 1, 0, 0);
+    t++;
+    delay(1);
+
+  }
+  t=0;
+  while(t<downTime){
+    robot.SpecialUpdate(0, 0, 0, 1, 0,0, 0, 0, 0);
+    t++;
+    delay(1);
+  }
+  robot.SpecialUpdate(0, 0, 0, 0, 0,0, 0, 0, 0);
+
+
+}
 void operatorControl()
 {
+
+  // while(true){
+  //   if(joystickGetDigital(joystickSlot,6,JOY_DOWN){
+  //     wackyautonomous();
+  //   }
+  //
+  //
+  // }
   int Cpin=1;
   int DRpin=2;
   int DLpin=3;
@@ -73,5 +123,5 @@ void operatorControl()
   Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,LURpin,LULpin,Cpin,Ipin,SLpin, 1);
   while(true){
     robot.Update(1);
-  }
+   }
 }

@@ -12,9 +12,8 @@ public:
   Claw():Actuator::Actuator(1){};
   Claw(int p1):Actuator::Actuator(p1){};
   Claw(int p1,int speed):Actuator::Actuator(p1,speed){};
-
-  void clawSet(bool openClosed){
-    if(openClosed){
+  void clawSet(bool ifClosed){
+    if(ifClosed){
       Actuator::Update(0,1);
       openTimer=700;
     }else if(openTimer>0){

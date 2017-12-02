@@ -32,3 +32,13 @@ void Robot::Update(int LMOVE,int RMOVE,bool liftUp,bool liftDown,bool intakeUp,b
     claw.Update(clawToggle);
     secondaryLift.Update(secondUp,secondDown);
 }
+void Robot::SpecialUpdate(int LMOVE,int RMOVE,bool liftUp,bool liftDown,bool intakeUp,bool intakeDown,bool clawSet,bool secondUp,bool secondDown)
+{
+
+    driveT.Update(LMOVE,RMOVE);
+    liftL.Update(liftUp,liftDown);
+    liftR.Update(liftDown,liftUp);
+    intake.Update(intakeDown,intakeUp);
+    claw.clawSet(clawSet);
+    secondaryLift.Update(secondUp,secondDown);
+}
