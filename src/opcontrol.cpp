@@ -58,70 +58,63 @@
  #include "Robot.h"
 # include "API.h"
 
-void wackyautonomous() {
-  int Cpin=1;
-  int DRpin=2;
-  int DLpin=3;
-  int LRpin=4;
-  int LLpin=5;
-  int LURpin=6;
-  int LULpin=7;
-  int SLpin=9;
 
-  int Ipin=8;
-
-  Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,LURpin,LULpin,Cpin,Ipin,SLpin, 1);
-
-  int upLiftTime=2000;
-  int downTime=900;
-  int driveTime=1500;
-  int t=0;
-  while(t<upLiftTime){
-    robot.SpecialUpdate(0, 0, 1, 0, 0,0, 1, 0, 0);
-    t++;
-    delay(1);
-
-  }
-  t=0;
-  while(t<driveTime){
-    robot.SpecialUpdate(127, 127, 0, 0, 0, 0, 1, 0, 0);
-    t++;
-    delay(1);
-
-  }
-  t=0;
-  while(t<downTime){
-    robot.SpecialUpdate(0, 0, 0, 1, 0,0, 0, 0, 0);
-    t++;
-    delay(1);
-  }
-  robot.SpecialUpdate(0, 0, 0, 0, 0,0, 0, 0, 0);
-
-
-}
 void operatorControl()
 {
+  while (1){
 
-  // while(true){
-  //   if(joystickGetDigital(joystickSlot,6,JOY_DOWN){
-  //     wackyautonomous();
-  //   }
-  //
-  //
-  // }
-  int Cpin=1;
-  int DRpin=2;
-  int DLpin=3;
-  int LRpin=4;
-  int LLpin=5;
-  int LURpin=6;
-  int LULpin=7;
-  int SLpin=9;
+      // if(left>50){
+      //   motorSet(2, 127);
+      //   motorSet(3, 127);
+      // }else if(left< -50){
+      //   motorSet(2, -127);
+      //   motorSet(3, -127);
+      // }else{
+      //   motorSet(2, 0);
+      //   motorSet(3, 0);
+      // }
+      // if(right>50){
+      //   motorSet(1, 127);
+      //   motorSet(4, 127);
+      // }else if(right< -50){
+      //   motorSet(1, -127);
+      //   motorSet(4, -127);
+      // }else{
+      //   motorSet(1, 0);
+      //   motorSet(4, 0);
+      // }
+      //I1
 
-  int Ipin=8;
+      DriveTrain drive1=DriveTrain(3,4,1);
+      drive1.Update(joystickGetAnalog(1, 3), joystickGetAnalog(1, 2));
 
-  Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,LURpin,LULpin,Cpin,Ipin,SLpin, 1);
-  while(true){
-    robot.Update(1);
-   }
+
+      // motorSet(2, left) ; // set left wheels in motion
+      // motorSet(3, left);
+      //
+      //
+      // motorSet(1, right); // set right wheels in motion
+      // motorSet(4, right);
+
+
+       int rightTriggerUpPressed = joystickGetDigital(1, 6, JOY_UP); // get state of right trigger top
+       int leftTriggerDownPressed = joystickGetDigital(1, 6, JOY_DOWN); // get state of left trigger top
+
+       if (rightTriggerUpPressed){
+
+         motorSet(5, 50); // set arm system in upward motion
+         motorSet(6, -50);
+
+       }else if(leftTriggerDownPressed){
+
+         motorSet(5, -50); // set arm system in downward motion
+         motorSet(6, 50);
+
+       }else{
+
+         motorSet(5, 0); // stop moving
+         motorSet(6,0);
+
+       }
+     }
 }
