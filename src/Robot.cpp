@@ -5,8 +5,8 @@ Robot::Robot()
 }
 Robot::Robot(int DRpin,int DLpin,int LRpin,int LLpin,int LURpin,int LULpin,int Cpin,int Ipin,int SLpin,int speedC){
   driveT=DriveTrain(DRpin, DLpin,speedC);
-  liftL=ActuatorArray(LLpin,LULpin);
-  liftR=ActuatorArray(LRpin,LURpin);
+  liftL=Actuator(LLpin);
+  liftR=Actuator(LRpin);
   intake=Actuator(Ipin);
   claw=Claw(Cpin,50);
   secondaryLift=Actuator(SLpin);

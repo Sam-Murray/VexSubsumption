@@ -15,8 +15,8 @@ public:
   Robot();
   Robot(int DRpin,int DLpin,int LRpin,int LLpin,int LURpin,int LULpin,int Cpin,int Ipin,int SLpin,int speedC); //constructor for ROBOT
   DriveTrain driveT;//drive train
-  ActuatorArray liftL;
-  ActuatorArray liftR;
+  Actuator liftL;
+  Actuator liftR;
   Actuator intake;
   Claw claw;
   Actuator secondaryLift;
