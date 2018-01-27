@@ -61,60 +61,16 @@
 
 void operatorControl()
 {
-  while (1){
+  int Cpin=8;
+  int DRpin=2;
+  int DLpin=3;
+  int LRpin=4;
+  int LLpin=5;
+  int SLpin=6;
+  int Ipin=7;
 
-      // if(left>50){
-      //   motorSet(2, 127);
-      //   motorSet(3, 127);
-      // }else if(left< -50){
-      //   motorSet(2, -127);
-      //   motorSet(3, -127);
-      // }else{
-      //   motorSet(2, 0);
-      //   motorSet(3, 0);
-      // }
-      // if(right>50){
-      //   motorSet(1, 127);
-      //   motorSet(4, 127);
-      // }else if(right< -50){
-      //   motorSet(1, -127);
-      //   motorSet(4, -127);
-      // }else{
-      //   motorSet(1, 0);
-      //   motorSet(4, 0);
-      // }
-      //I1
-
-      DriveTrain drive1=DriveTrain(3,4,1);
-      drive1.Update(joystickGetAnalog(1, 3), joystickGetAnalog(1, 2));
-
-
-      // motorSet(2, left) ; // set left wheels in motion
-      // motorSet(3, left);
-      //
-      //
-      // motorSet(1, right); // set right wheels in motion
-      // motorSet(4, right);
-
-
-       int rightTriggerUpPressed = joystickGetDigital(1, 6, JOY_UP); // get state of right trigger top
-       int leftTriggerDownPressed = joystickGetDigital(1, 6, JOY_DOWN); // get state of left trigger top
-
-       if (rightTriggerUpPressed){
-
-         motorSet(5, 50); // set arm system in upward motion
-         motorSet(6, -50);
-
-       }else if(leftTriggerDownPressed){
-
-         motorSet(5, -50); // set arm system in downward motion
-         motorSet(6, 50);
-
-       }else{
-
-         motorSet(5, 0); // stop moving
-         motorSet(6,0);
-
-       }
+  Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,Cpin,Ipin,SLpin, 1);
+  while(true){
+    robot.Update(1);
      }
 }

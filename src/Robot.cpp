@@ -3,7 +3,7 @@
 Robot::Robot()
 {
 }
-Robot::Robot(int DRpin,int DLpin,int LRpin,int LLpin,int LURpin,int LULpin,int Cpin,int Ipin,int SLpin,int speedC){
+Robot::Robot(int DRpin,int DLpin,int LRpin,int LLpin,int Cpin,int Ipin,int SLpin,int speedC){
   driveT=DriveTrain(DRpin, DLpin,speedC);
   liftL=Actuator(LLpin);
   liftR=Actuator(LRpin);

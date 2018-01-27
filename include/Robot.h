@@ -13,7 +13,7 @@
 class Robot{
 public:
   Robot();
-  Robot(int DRpin,int DLpin,int LRpin,int LLpin,int LURpin,int LULpin,int Cpin,int Ipin,int SLpin,int speedC); //constructor for ROBOT
+  Robot(int DRpin,int DLpin,int LRpin,int LLpin,int Cpin,int Ipin,int SLpin,int speedC); //constructor for ROBOT
   DriveTrain driveT;//drive train
   Actuator liftL;
   Actuator liftR;
