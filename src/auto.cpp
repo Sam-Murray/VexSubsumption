@@ -45,6 +45,14 @@ void toggleClaw(Robot r){
   r.Update(0, 0, 0, 0, 0,0, 1, 0, 0);
 }
 void autonomous() {
+  int Cpin=8;
+  int DRpin=2;
+  int DLpin=3;
+  int LRpin=4;
+  int LLpin=5;
+  int SLpin=6;
+  int Ipin=7;
+  Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,Cpin,Ipin,SLpin, 1);
 
 }
   // upSecond(robot,upTime);
