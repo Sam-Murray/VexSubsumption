@@ -16,11 +16,13 @@ public:
     if(ifClosed){
       Actuator::Update(0,1);
       openTimer=700;
-    }else if(openTimer>0){
-      Actuator::Update(1,0);
-      openTimer-=1;
     }else{
-      Actuator::Update(0,0);
+      if(openTimer>0){
+        Actuator::Update(1,0);
+      openTimer-=1;
+      }else{
+        Actuator::Update(0,0);
+      }
     }
   }
 
