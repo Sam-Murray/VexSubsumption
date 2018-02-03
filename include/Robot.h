@@ -5,6 +5,7 @@
 #include "Actuator.h"
 #include "ActuatorArray.h"
 #include "Claw.h"
+#include "Lift.h"
 
 #define R_MOVE 2
 
