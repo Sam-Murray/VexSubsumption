@@ -36,20 +36,23 @@ void autonomous() {
   int SLpin=6;
   int Ipin=7;
   Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,Cpin,Ipin,SLpin, 1);
-  int upTime=50000;
-  int downTime=10000;
-  int driveTime=50000;
+  int upTime=1500;
+  int downTime=1000;
+  int driveTime=2500;
+  int backtime=1000;
   int t=0;
   while(t<15000000){
 
     if(t<upTime){
-        robot.SpecialUpdate(0, 0, 0, 0, 0,0, 1, 1, 0);
+        robot.SpecialUpdate(0,0,1, 0, 1, 0, 0,0, 1, 0, 0);
     }else if(t<(upTime+driveTime)){
-          robot.SpecialUpdate(127, 127, 0, 0, 0,0, 1, 0, 0);
+          robot.SpecialUpdate(127, 127,0,0, 0, 0, 0,0, 1, 0, 0);
     }else if(t<(upTime+driveTime+downTime)){
-      robot.SpecialUpdate(0, 0, 0, 0, 0,0, 1, 0, 1);
+      robot.SpecialUpdate(0, 0,0,1, 0, 1, 0,0, 1, 0, 0);
+    }else if(t<(upTime+driveTime+downTime+backtime)){
+      robot.SpecialUpdate(-127, -127,0,0, 0, 0, 0, 0, 0, 0, 0);
     }else{
-      robot.SpecialUpdate(0, 0, 0, 0, 0,0, 0, 0, 0);
+      robot.SpecialUpdate(0, 0,0,0, 0, 0, 0, 0, 0, 0, 0);
     }
     delay(1);
     t++;
