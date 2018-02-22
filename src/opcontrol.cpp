@@ -68,9 +68,18 @@ void operatorControl()
   int LLpin=5;
   int SLpin=6;
   int Ipin=7;
-
+  printf("hello");
   Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,Cpin,Ipin,SLpin, 1);
+  int count;
+  imeReset(IME_RIGHT_LIFT);
   while(true){
+    if(joystickGetDigital(1,7,JOY_LEFT)){
+      imeReset(IME_RIGHT_LIFT);
+    }
     robot.Update(1);
+     if(millis() % 2000 == 0) {
+       imeGet(IME_RIGHT_LIFT, &count);
+       printf("Count %d\n", (int)count);
      }
+  }
 }

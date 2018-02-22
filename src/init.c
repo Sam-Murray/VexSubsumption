@@ -12,6 +12,7 @@
 
 #include "main.h"
 
+
 /*
  * Runs pre-initialization code. This function will be started in kernel mode one time while the
  * VEX Cortex is starting up. As the scheduler is still paused, most API functions will fail.
@@ -42,6 +43,6 @@ void initializeIO() {
 void initialize() {
   int IMECount = imeInitializeAll();
   if(IMECount!= 3){
-    //fuck
+    printf("Uh-Oh!");
   }
 }

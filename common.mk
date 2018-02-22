@@ -22,7 +22,8 @@ SIZEFLAGS=
 # Uploads program using java
 UPLOAD=@java -jar firmware/uniflash.jar vex $(BINDIR)/$(OUTBIN)
 # Flashes program using the PROS CLI flash command
-FLASH=pros flash -f $(BINDIR)/$(OUTBIN)
+#FLASH=pros flash -f $(BINDIR)/$(OUTBIN)
+FLASH=@python3 upload.py bin/output.bin
 
 # Advanced options
 ASMEXT=s

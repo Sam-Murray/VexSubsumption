@@ -30,7 +30,7 @@
 //Defines IMEs
 #define IME_RIGHT_LIFT 0
 #define IME_LEFT_LIFT 1
-#define IME_UPPER_LIFT 2
+//#define IME_UPPER_LIFT 2
 #define NUMBER_OF_IME 3
 
 // Allow usage of this file in C++ programs
