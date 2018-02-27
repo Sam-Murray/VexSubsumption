@@ -55,31 +55,41 @@
    //   digitalWrite(9,false);
    // }
    //digitalWrite(9,false);
- #include "Robot.h"
 # include "API.h"
-
+#include "MacroManager.h"
+#include <vector>
 
 void operatorControl()
 {
-  int Cpin=8;
-  int DRpin=2;
-  int DLpin=3;
-  int LRpin=4;
-  int LLpin=5;
-  int SLpin=6;
-  int Ipin=7;
-  printf("hello");
-  Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,Cpin,Ipin,SLpin, 1);
-  int count;
-  imeReset(IME_RIGHT_LIFT);
+  // int Cpin=8;
+  // int DRpin=2;
+  // int DLpin=3;
+  // int LRpin=4;
+  // int LLpin=5;
+  // int SLpin=6;
+  // int Ipin=7;
+  // printf("hello");
+  // Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,Cpin,Ipin,SLpin, 1);
+  // int count;
+  // imeReset(IME_RIGHT_LIFT);
+  // while(true){
+  //   if(joystickGetDigital(1,7,JOY_LEFT)){
+  //     imeReset(IME_RIGHT_LIFT);
+  //   }
+  //   robot.Update(1);
+  //    if(millis() % 2000 == 0) {
+  //      imeGet(IME_RIGHT_LIFT, &count);
+  //      printf("Count %d\n", (int)count);
+  //    }
+  // }
+
+   printf("pfrefrank\n");
+
+
+
+  // printf("post-frank\n");
+  MacroManager macromanager=MacroManager();;
   while(true){
-    if(joystickGetDigital(1,7,JOY_LEFT)){
-      imeReset(IME_RIGHT_LIFT);
-    }
-    robot.Update(1);
-     if(millis() % 2000 == 0) {
-       imeGet(IME_RIGHT_LIFT, &count);
-       printf("Count %d\n", (int)count);
-     }
+    macromanager.Update();
   }
 }

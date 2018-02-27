@@ -2,39 +2,16 @@
 #define CLAW_H
 #include "API.h"
 #include "Actuator.h"
+#include "pins.h"
 
-class Claw:public Actuator{
+class Claw {
 private:
-  bool closed=false;
-  bool control=true;
-  int openTimer=10000;
+  Actuator claw;
+
 public:
-  Claw():Actuator::Actuator(1){};
-  Claw(int p1):Actuator::Actuator(p1){};
-  Claw(int p1,int speed):Actuator::Actuator(p1,speed){};
-  void clawSet(bool ifClosed){
-    if(ifClosed){
-      Actuator::Update(0,1);
-      openTimer=10000;
-    }else{
-      if(openTimer>0){
-        Actuator::Update(1,0);
-        openTimer-=1;
-      }else{
-        Actuator::Update(0,0);
-      }
-    }
-  }
-
-  void Update(bool toggle){
-
-    if(toggle&&control)
-    {
-      closed=!closed;
-    }
-    clawSet(closed);
-    control=!toggle;
-  }
+  Claw() { claw = Actuator(CLAW_PIN); }
+  bool getLS() { return digitalRead(LS_CLAW_PIN); }
+  void Update(bool open, bool close) { claw.Update(open, close); }
 };
 
 #endif

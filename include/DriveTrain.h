@@ -8,8 +8,8 @@ class DriveTrain{
 private:
   // MotorUnit FR; //front right motor
   // MotorUnit FL; //front left motor
-  MotorUnit L;//back left motor
-  MotorUnit R;//back right motor
+  MotorUnit L;//left motor
+  MotorUnit R;//right motor
   int speedConvertion;
   void allMotorSet(int speed);
   void MotorSet(int Rs, int Ls);
@@ -20,7 +20,7 @@ public:
   DriveTrain(int Rpin, int Lpin,int speedC);
   void Update(int L_MOVE, int R_MOVE);
 };
-
+extern DriveTrain* drivetrain;
 
 
 #endif

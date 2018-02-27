@@ -41,8 +41,5 @@ void initializeIO() {
  * can be implemented in this task if desired.
  */
 void initialize() {
-  int IMECount = imeInitializeAll();
-  if(IMECount!= 3){
-    printf("Uh-Oh!");
-  }
+
 }

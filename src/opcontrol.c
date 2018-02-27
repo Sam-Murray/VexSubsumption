@@ -29,7 +29,6 @@
  *
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
-#include "Robot.h"
 void operatorControl() {
 	// int DRpin=2;
 	// int DLpin=3;
@@ -42,4 +41,7 @@ void operatorControl() {
   // while(true){
   //   robot.Update(1);
   // }
+  while(true){
+    printf("breakfast");
+  }
 }

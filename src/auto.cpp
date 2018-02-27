@@ -28,35 +28,35 @@
  */
 
 void autonomous() {
-  int Cpin=8;
-  int DRpin=2;
-  int DLpin=3;
-  int LRpin=4;
-  int LLpin=5;
-  int SLpin=6;
-  int Ipin=7;
-  Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,Cpin,Ipin,SLpin, 1);
-  int upTime=1500;
-  int downTime=1000;
-  int driveTime=2500;
-  int backtime=1000;
-  int t=0;
-  while(t<15000000){
-
-    if(t<upTime){
-        robot.SpecialUpdate(0,0,1, 0, 1, 0, 0,0, 1, 0, 0);
-    }else if(t<(upTime+driveTime)){
-          robot.SpecialUpdate(127, 127,0,0, 0, 0, 0,0, 1, 0, 0);
-    }else if(t<(upTime+driveTime+downTime)){
-      robot.SpecialUpdate(0, 0,0,1, 0, 1, 0,0, 1, 0, 0);
-    }else if(t<(upTime+driveTime+downTime+backtime)){
-      robot.SpecialUpdate(-127, -127,0,0, 0, 0, 0, 0, 0, 0, 0);
-    }else{
-      robot.SpecialUpdate(0, 0,0,0, 0, 0, 0, 0, 0, 0, 0);
-    }
-    delay(1);
-    t++;
-  }
+  // int Cpin=8;
+  // int DRpin=2;
+  // int DLpin=3;
+  // int LRpin=4;
+  // int LLpin=5;
+  // int SLpin=6;
+  // int Ipin=7;
+  // Robot robot= Robot(DRpin, DLpin,LRpin,LLpin,Cpin,Ipin,SLpin, 1);
+  // int upTime=1500;
+  // int downTime=1000;
+  // int driveTime=2500;
+  // int backtime=1000;
+  // int t=0;
+  // while(t<15000000){
+  //
+  //   if(t<upTime){
+  //       robot.SpecialUpdate(0,0,1, 0, 1, 0, 0,0, 1, 0, 0);
+  //   }else if(t<(upTime+driveTime)){
+  //         robot.SpecialUpdate(127, 127,0,0, 0, 0, 0,0, 1, 0, 0);
+  //   }else if(t<(upTime+driveTime+downTime)){
+  //     robot.SpecialUpdate(0, 0,0,1, 0, 1, 0,0, 1, 0, 0);
+  //   }else if(t<(upTime+driveTime+downTime+backtime)){
+  //     robot.SpecialUpdate(-127, -127,0,0, 0, 0, 0, 0, 0, 0, 0);
+  //   }else{
+  //     robot.SpecialUpdate(0, 0,0,0, 0, 0, 0, 0, 0, 0, 0);
+  //   }
+  //   delay(1);
+  //   t++;
+  // }
 
 }
   // upSecond(robot,upTime);

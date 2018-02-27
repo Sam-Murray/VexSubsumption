@@ -1,16 +1,28 @@
 #ifndef LIFT_H
 #define LIFT_H
-#include "MotorUnit.h"
 #include "API.h"
 #include "Actuator.h"
-class Lift{
-
-private:
+#include "MotorUnit.h"
+#include "pins.h"
+class Lift {
 
 public:
+  // Lift motors: right side wired together, left side wired together, and the upper lift.
+  MotorUnit RightLift;
+  MotorUnit LeftLift;
+  // Integreated motor encoder pins: right side, left side, and upper.
+  int P_pin_R;
+  int P_pin_L;
+  // Limit switch pins:
+  int LS_pin_Main_Down;
+  int LS_pin_Main_Up;
 
-
-
+  Lift() : RightLift(MotorUnit(RIGHT_LIFT_PIN)), LeftLift(MotorUnit(LEFT_LIFT_PIN)){};
+  bool getUpperLS();
+  bool getLowerLS();
+  int getLeftP();
+  int getRightP();
+  void setMotors(int R, int L);
 };
 
 #endif
