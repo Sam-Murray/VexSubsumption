@@ -7,7 +7,8 @@
 class Lift {
 
 public:
-  // Lift motors: right side wired together, left side wired together, and the upper lift.
+  // Lift motors: right side wired together, left side wired together, and the
+  // upper lift.
   MotorUnit RightLift;
   MotorUnit LeftLift;
   // Integreated motor encoder pins: right side, left side, and upper.
@@ -17,7 +18,15 @@ public:
   int LS_pin_Main_Down;
   int LS_pin_Main_Up;
 
-  Lift() : RightLift(MotorUnit(RIGHT_LIFT_PIN)), LeftLift(MotorUnit(LEFT_LIFT_PIN)){};
+  int offset_L;
+  int offset_R;
+
+  Lift()
+      : RightLift(MotorUnit(RIGHT_LIFT_PIN)),
+        LeftLift(MotorUnit(LEFT_LIFT_PIN)) {
+    offset_L = 556;
+    offset_R = 1354;
+  };
   bool getUpperLS();
   bool getLowerLS();
   int getLeftP();

@@ -25,6 +25,8 @@ void initializeIO() {
 
   pinMode(1, OUTPUT); // configure digital port 1 as an output
  // write LOW to port 1 (solenoid may be extended or not, depending on wiring)
+ pinMode(1, INPUT_ANALOG);
+ pinMode(2, INPUT_ANALOG);
 }
 
 /*

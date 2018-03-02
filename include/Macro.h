@@ -34,7 +34,9 @@ public:
 class SpinDrive : public Macro {
 public:
   DriveTrain *drivetrain;
-  SpinDrive() : Macro(RIGHT_DRIVETRAIN_BIT | LEFT_DRIVETRAIN_BIT) { drivetrain = new DriveTrain; };
+  SpinDrive() : Macro(RIGHT_DRIVETRAIN_BIT | LEFT_DRIVETRAIN_BIT) {
+    drivetrain = new DriveTrain;
+  };
   bool activate();
   Macro *Update();
 };
@@ -57,12 +59,12 @@ public:
 };
 class ToggleClaw : public Macro {
 public:
-  SetClaw setClaw;
-  int openTime;
+  Claw claw;
+  int timer;
   bool opening;
   bool toggle;
   ToggleClaw() : Macro(CLAW_BIT) {
-    openTime = 2000;
+    timer = 2000;
     opening = false;
     toggle = true;
   };
@@ -80,7 +82,70 @@ public:
   bool activate();
   Macro *Update();
 };
+class StableLift : public Macro {
+public:
+  Lift *lift;
+  int R_stable;
+  int L_stable;
+  void init(int rstable, int lstable);
+  StableLift() : Macro(RIGHT_LIFT_BIT | LEFT_LIFT_BIT) {
+    lift = new Lift;
+    R_stable = 0;
+    L_stable = 0;
+  };
+  bool activate();
+  Macro *Update();
+};
+//============================
+// Upper Lift Macros
+//============================
+class UpperLift : public Macro {
+public:
+  Actuator upperlift;
+  UpperLift() : Macro(UPPER_LIFT_BIT) { upperlift = Actuator(UPPER_LIFT_PIN); };
+  bool activate();
+  Macro *Update();
+};
+//============================
+// Intake Macros
+//============================
+class Intake : public Macro {
+public:
+  Actuator intake;
+  Intake() : Macro(INTAKE_BIT) { intake = Actuator(INTAKE_PIN); };
+  bool activate();
+  Macro *Update();
+};
 
+class Stack : public Macro {
+public:
+  Claw claw;
+  Lift lift;
+  Actuator upperLift;
+  int timer;
+  Stack() : Macro(LEFT_LIFT_BIT | RIGHT_LIFT_BIT | UPPER_LIFT_BIT | CLAW_BIT) {
+    upperLift = Actuator(UPPER_LIFT_PIN);
+    timer = 10000;
+  };
+  bool activate();
+  Macro *Update();
+};
+
+class Autonomous : public Macro {
+public:
+  DriveTrain drive;
+  Actuator intake;
+  Actuator upperLift;
+  int timer;
+  Autonomous()
+      : Macro(UPPER_LIFT_BIT | RIGHT_DRIVETRAIN_BIT | LEFT_DRIVETRAIN_BIT |
+              INTAKE_BIT) {
+    upperLift = Actuator(UPPER_LIFT_PIN);
+    timer = 50000;
+  };
+  bool activate();
+  Macro *Update();
+};
 #define NULL_MACRO ((Macro *)0)
 
 #endif

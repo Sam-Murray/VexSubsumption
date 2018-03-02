@@ -4,21 +4,31 @@ MacroManager::MacroManager() {
   allMacros = new MacroList;
   standbyMacros = new MacroList;
   activeMacros = new MacroList;
-
-  allMacros->push(new SpinDrive());
+  allMacros->push(new Autonomous());
+  allMacros->push(new Stack());
   allMacros->push(new ManualDrive());
   allMacros->push(new ToggleClaw());
+  allMacros->push(new UpperLift());
+  allMacros->push(new Intake());
   allMacros->push(new ManualLift());
+}
+MacroManager::MacroManager() {
+  allMacros = new MacroList;
+  standbyMacros = new MacroList;
+  activeMacros = new MacroList;
+  allMacros->push(new Autonomous())
 }
 
 void MacroManager::runMacros() {
   for (int m = activeMacros->size() - 1; m >= 0; m--) {
     Macro *macro = activeMacros->at(m)->Update();
-    activeMacros->at(m)->isActive = false;
+
     if (macro != NULL_MACRO) {
       standbyMacros->push(macro);
+    } else {
     }
   }
+
   activeMacros->clear();
   activateMacros();
   standbyMacros->clear();
@@ -35,9 +45,11 @@ void MacroManager::detectInterupt() {
   int accumulater = 0;
   for (int m = standbyMacros->size() - 1; m >= 0; m--) {
     if (!(accumulater & standbyMacros->at(m)->pinBit)) {
-      standbyMacros->at(m)->isActive = true;
       activeMacros->push(standbyMacros->at(m));
+      standbyMacros->at(m)->isActive = true;
       accumulater |= standbyMacros->at(m)->pinBit;
+    } else {
+      standbyMacros->at(m)->isActive = false;
     }
   }
 }

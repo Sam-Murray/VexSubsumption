@@ -8,11 +8,12 @@
 #define CLAW_PIN 8
 // The pins for the Limit switches
 #define LS_CLAW_PIN 1
-#define LS_LEFT_LIFT_PIN 2
-#define LS_RIGHT_LIFT_PIN 3
+#define LS_BOTTOM_LIFT_PIN 2
+#define LS_TOP_LIFT_PIN 3
 // The pins for Potentiometers
-#define P_LEFT_LIFT_PIN 4
-#define P_RIGHT_LIFT_PIN 5
+#define P_LEFT_LIFT_PIN 1
+#define P_RIGHT_LIFT_PIN 2
+#define P_UPPER_LIFT_PIN 3
 // The bit shifted versions of the pins.
 #define RIGHT_DRIVETRAIN_BIT (1 << RIGHT_DRIVETRAIN_PIN)
 #define LEFT_DRIVETRAIN_BIT (1 << LEFT_DRIVETRAIN_PIN)
